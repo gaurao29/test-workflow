@@ -355,7 +355,176 @@
         ],
         "responses": {
           "200": {
-            "description": "Get all example from system",
+            "description": "Get example entity from system",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "content_type": {
+                      "type": "string"
+                    },
+                    "poll_frequency": {
+                      "type": "string"
+                    },
+                    "data_directory": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "recent_editions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "description": "example nested object",
+                        "properties": {
+                          "edition_name": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Common error response object schema",
+                  "required": [
+                    "error_type"
+                  ],
+                  "properties": {
+                    "error_type": {
+                      "description": "A type of error",
+                      "type": "string"
+                    },
+                    "user_message": {
+                      "description": "A human readable error message",
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "description": "A error code associated to error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No example found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Common error response object schema",
+                  "required": [
+                    "error_type"
+                  ],
+                  "properties": {
+                    "error_type": {
+                      "description": "A type of error",
+                      "type": "string"
+                    },
+                    "user_message": {
+                      "description": "A human readable error message",
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "description": "A error code associated to error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Common error response object schema",
+                  "required": [
+                    "error_type"
+                  ],
+                  "properties": {
+                    "error_type": {
+                      "description": "A type of error",
+                      "type": "string"
+                    },
+                    "user_message": {
+                      "description": "A human readable error message",
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "description": "A error code associated to error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "update existing entity",
+        "operationId": "putExample",
+        "tags": [
+          "Examples"
+        ],
+        "parameters": [
+          {
+            "name": "exampleId",
+            "description": "The unique identifier of the example entity",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the example entity",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update existing entity",
             "content": {
               "application/json": {
                 "schema": {
